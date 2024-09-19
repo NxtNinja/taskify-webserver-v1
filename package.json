@@ -1,0 +1,20 @@
+{
+  "name": "todo-server",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "directus start",
+    "migrate": "directus database migrate:latest",
+    "boot": "directus bootstrap",
+    "snap": "directus schema snapshot --yes ./snapshot.yaml",
+    "snapmg": "directus schema apply --yes ./snapshot.yaml"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "directus": "^11.0.2",
+    "pg": "^8.12.0"
+  }
+}

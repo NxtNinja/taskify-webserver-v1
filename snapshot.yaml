@@ -6,8 +6,8 @@ collections:
     meta:
       accountability: all
       archive_app_filter: true
-      archive_field: null
-      archive_value: null
+      archive_field: status
+      archive_value: archived
       collapse: open
       collection: task
       color: null
@@ -22,7 +22,7 @@ collections:
       sort: null
       sort_field: sort
       translations: null
-      unarchive_value: null
+      unarchive_value: draft
       versioning: false
     schema:
       name: task
@@ -61,6 +61,65 @@ fields:
       is_nullable: false
       is_unique: true
       is_primary_key: true
+      is_generated: false
+      generation_expression: null
+      has_auto_increment: false
+      foreign_key_table: null
+      foreign_key_column: null
+  - collection: task
+    field: status
+    type: string
+    meta:
+      collection: task
+      conditions: null
+      display: labels
+      display_options:
+        choices:
+          - text: Todo
+            value: todo
+            color: var(--theme--primary)
+          - text: Completed
+            value: completed
+            color: var(--theme--foreground)
+          - text: In progress
+            value: in-progress
+            color: var(--theme--warning)
+        showAsDot: true
+      field: status
+      group: null
+      hidden: false
+      interface: select-dropdown
+      note: null
+      options:
+        choices:
+          - text: Todo
+            value: todo
+            color: var(--theme--primary)
+          - text: Completed
+            value: completed
+            color: var(--theme--foreground)
+          - text: In progress
+            value: in-progress
+            color: var(--theme--warning)
+      readonly: false
+      required: false
+      sort: 2
+      special: null
+      translations: null
+      validation: null
+      validation_message: null
+      width: full
+    schema:
+      name: status
+      table: task
+      data_type: character varying
+      default_value: todo
+      max_length: 255
+      numeric_precision: null
+      numeric_scale: null
+      is_nullable: false
+      is_unique: false
+      is_primary_key: false
       is_generated: false
       generation_expression: null
       has_auto_increment: false
@@ -225,14 +284,14 @@ fields:
       foreign_key_table: null
       foreign_key_column: null
   - collection: task
-    field: title
+    field: heading
     type: string
     meta:
       collection: task
       conditions: null
       display: raw
       display_options: null
-      field: title
+      field: heading
       group: null
       hidden: false
       interface: input
@@ -247,96 +306,7 @@ fields:
       validation_message: null
       width: full
     schema:
-      name: title
-      table: task
-      data_type: character varying
-      default_value: null
-      max_length: 255
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: task
-    field: description
-    type: string
-    meta:
-      collection: task
-      conditions: null
-      display: raw
-      display_options: null
-      field: description
-      group: null
-      hidden: false
-      interface: input
-      note: null
-      options: null
-      readonly: false
-      required: false
-      sort: 9
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: description
-      table: task
-      data_type: character varying
-      default_value: null
-      max_length: 255
-      numeric_precision: null
-      numeric_scale: null
-      is_nullable: true
-      is_unique: false
-      is_primary_key: false
-      is_generated: false
-      generation_expression: null
-      has_auto_increment: false
-      foreign_key_table: null
-      foreign_key_column: null
-  - collection: task
-    field: status
-    type: string
-    meta:
-      collection: task
-      conditions: null
-      display: raw
-      display_options: null
-      field: status
-      group: null
-      hidden: false
-      interface: select-dropdown
-      note: null
-      options:
-        choices:
-          - text: Completed
-            value: completed
-            icon: done
-            color: '#10EA6E'
-          - text: In Progress
-            value: in-progress
-            icon: compare_arrows
-            color: '#AED100'
-          - text: Todo
-            value: todo
-            icon: work_history
-            color: '#000ED6'
-      readonly: false
-      required: false
-      sort: 2
-      special: null
-      translations: null
-      validation: null
-      validation_message: null
-      width: full
-    schema:
-      name: status
+      name: heading
       table: task
       data_type: character varying
       default_value: null
